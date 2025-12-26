@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Für dich ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px 15px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      width: 80%;
+      max-width: 300px;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      background: white;
+      color: #ff4f7a;
+      cursor: pointer;
+      display: none;
+    }
+
+    button:hover {
+      background: #ffe1ea;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 20px;
+      margin: 15px 0;
+    }
+
+    .heart {
+      font-size: 2.5rem;
+      animation: pulse 1.2s infinite;
+      margin-top: 15px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Rätsel -->
+  <div id="raetsel">
+    <h1>🎄 Kleines Rätsel 🎄</h1>
+    <p>
+      Eine Sache, die wir zusammen lieben,<br>
+      die Zeit bleibt stehen, wenn sie beginnt.<br>
+      Was ist es?
+    </p>
+
+    <!-- ÄNDERN: richtige Antwort -->
+    <input type="text" id="answer" placeholder="Deine Antwort...">
+    <br>
+    <button id="unlockBtn" onclick="openGift()">🎁 Öffnen</button>
+  </div>
+
+  <!-- Geschenk -->
+  <div id="gift" class="hidden">
+    <h1>Frohe Weihnachten, mein Schatz ❤️</h1>
+
+    <!-- Musik -->
+    <audio id="music" src="song.mp3" loop></audio>
+
+    <!-- Bilder -->
+    <img src="bild1.jpg" alt="Wir">
+    <img src="bild2.jpg" alt="Lieblingsmoment">
+
+    <!-- Text -->
+    <p>
+      Dieses Jahr war nicht perfekt – aber mit dir war es echt.<br><br>
+      Danke, dass du mich zum Lachen bringst,
+      mich verstehst und immer bei mir bist.<br><br>
+      Ich bin dankbar für jeden Moment mit dir
+      und ich freu mich auf alles, was noch kommt.
+    </p>
+
+    <div class="heart">❤️</div>
+
+    <p>Ich liebe dich.</p>
+  </div>
+
+</div>
+
+<script>
+  const input = document.getElementById("answer");
+  const button = document.getElementById("unlockBtn");
+
+  // HIER richtige Antwort eintragen (klein geschrieben!)
+  const correctAnswer = "filme";
+
+  input.addEventListener("input", () => {
+    if (input.value.toLowerCase().includes(correctAnswer)) {
+      button.style.display = "inline-block";
+    }
+  });
+
+  function openGift() {
+    document.getElementById("raetsel").style.display = "none";
+    document.getElementById("gift").classList.remove("hidden");
+    document.getElementById("music").play();
+  }
+</script>
+
+</body>
+</html>
