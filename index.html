@@ -2,66 +2,69 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Ich Liebe dich Jenny ❤️</title>
+  <title>Ich liebe dich Jenny ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: url("https://images.unsplash.com/photo-1608889175123-8ee9c1c2d6a8?auto=format&fit=crop&w=1600&q=80")
-              no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
-
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background-image: url("https://images.unsplash.com/photo-1608889175123-8ee9c1c2d6a8?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
     .container {
-      padding: 30px 15px;
       max-width: 700px;
-      margin: auto;
+      margin: 30px auto;
+      padding: 30px 15px;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 25px;
+      backdrop-filter: blur(6px);
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       margin-bottom: 10px;
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.6;
     }
 
     input {
       padding: 12px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: none;
       width: 80%;
       max-width: 300px;
       font-size: 1rem;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     button {
       margin-top: 15px;
-      padding: 12px 25px;
-      font-size: 1rem;
+      padding: 14px 28px;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 25px;
-      background: white;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.95);
       color: #ff4f7a;
+      font-weight: bold;
       cursor: pointer;
-      display: none;
+      touch-action: manipulation;
     }
 
-    button:hover {
-      background: #ffe1ea;
-    }
-
-    .hidden {
-      display: none;
+    button:active {
+      transform: scale(0.96);
     }
 
     img {
@@ -69,6 +72,10 @@
       max-width: 300px;
       border-radius: 20px;
       margin: 15px 0;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .heart {
@@ -82,103 +89,73 @@
       50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
+
     .snowflake {
-  position: fixed;
-  top: -10px;
-  color: white;
-  font-size: 1.2rem;
-  pointer-events: none;
-  animation: fall linear forwards;
-}
+      position: fixed;
+      top: -10px;
+      z-index: 0;
+      font-size: 1.4rem;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
-}
-#musicBtn {
-  margin-top: 15px;
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #ff4f7a;
-  font-weight: bold;
-  cursor: pointer;
-  touch-action: manipulation;
-}
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
 
-#musicBtn:active {
-  transform: scale(0.96);
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  img {
-    max-width: 90%;
-  }
-}
-
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      p { font-size: 1rem; }
+      img { max-width: 90%; }
+    }
   </style>
 </head>
+
 <body>
 
 <div class="container">
 
-  <!-- Rätsel -->
+  <!-- RÄTSEL -->
   <div id="raetsel">
     <h1>🎄 Kleines Rätsel 🎄</h1>
     <p>
       Eine Sache, die wir zusammen lieben,<br>
-      wenn du das nicht bekommst wirst du sauer.<br>
-      HAHAHHAHHAHAH<br>
+      wenn du sie nicht bekommst wirst du sauer 😄<br>
       Was ist es?
     </p>
 
-    <!-- ÄNDERN: richtige Antwort -->
     <input type="text" id="answer" placeholder="Deine Antwort...">
     <br>
-    <button id="unlockBtn" onclick="openGift()">🎁 Öffnen</button>
+    <button id="unlockBtn" onclick="openGift()" style="display:none;">
+      🎁 Öffnen
+    </button>
   </div>
 
-  <!-- Geschenk -->
+  <!-- GESCHENK -->
   <div id="gift" class="hidden">
     <h1>Frohe Weihnachten, mein Schatz ❤️</h1>
-    
 
-    <!-- Musik -->
-    <audio id="music" src="song.mp3" loop></audio>
+    <audio id="music" src="song.mp3" loop playsinline></audio>
 
-     <!-- Musik Button -->
-  <button id="musicBtn" onclick="startMusic()">
-    🎄 Für dich, Jenny
-  </button>
+    <button id="musicBtn" onclick="startMusic()">
+      🎄 Für dich, Jenny
+    </button>
 
-    <!-- Bilder -->
     <img src="bild1.jpeg" alt="Wir">
     <img src="bild2.jpeg" alt="Lieblingsmoment">
 
-    <!-- Text -->
     <p>
-      Dieses Jahr war nicht perfekt – Aber du bist es.<br><br>
+      Dieses Jahr war nicht perfekt – aber du bist es.<br><br>
       Danke, dass du mich zum Lachen bringst,
-      mich verstehst und immer für mich da bist.<br><br>
-      Ich bin so dankbar das du da bist❤️
-      und ich freu mich auf alles, was wir noch erleben werden.<br>
-      Ich Wünsche dir frohe Weihnachten Baby 
+      mich verstehst und immer bei mir bist.<br><br>
+      Ich bin dankbar für jeden Moment mit dir
+      und freue mich auf alles, was noch kommt.
     </p>
 
     <div class="heart">❤️</div>
-
     <p>Ich liebe dich.</p>
   </div>
 
@@ -218,14 +195,10 @@
       snowflake.style.left = Math.random() * window.innerWidth + "px";
       snowflake.style.animationDuration = (4 + Math.random() * 4) + "s";
       document.body.appendChild(snowflake);
-
       setTimeout(() => snowflake.remove(), 8000);
     }, 250);
   }
 </script>
-
-
-
 
 </body>
 </html>
