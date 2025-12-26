@@ -131,12 +131,15 @@
   const input = document.getElementById("answer");
   const button = document.getElementById("unlockBtn");
 
-  // HIER richtige Antwort eintragen (klein geschrieben!)
   const correctAnswer = "essen";
 
   input.addEventListener("input", () => {
-    if (input.value.toLowerCase().includes(correctAnswer)) {
+    const userInput = input.value.toLowerCase().trim();
+
+    if (userInput === correctAnswer) {
       button.style.display = "inline-block";
+    } else {
+      button.style.display = "none";
     }
   });
 
@@ -146,6 +149,7 @@
     document.getElementById("music").play();
   }
 </script>
+
 
 </body>
 </html>
